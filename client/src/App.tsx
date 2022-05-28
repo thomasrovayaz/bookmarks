@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BookmarksProvider from './context/BookmarksProvider';
+import { SnackbarProvider } from 'notistack';
+import BookmarkInput from './components/BookmarkInput';
+import BookmarksList from './components/BookmarksList';
+import 'moment/locale/fr';
+import moment from 'moment'; // without this line it didn't work
+moment.locale('fr');
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <SnackbarProvider maxSnack={3}>
+            <BookmarksProvider>
+                <div className="App">
+                    <h1>Bookmarks App</h1>
+                    <BookmarkInput />
+                    <BookmarksList />
+                </div>
+            </BookmarksProvider>
+        </SnackbarProvider>
     );
 }
 

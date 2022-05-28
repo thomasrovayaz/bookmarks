@@ -1,0 +1,41 @@
+.bookmark-input {
+    margin-top: 24px;
+    height: 50px;
+}
+
+.bookmark-input input, .bookmark-input button {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.bookmark-input input {
+    width: 500px;
+    padding: 0 16px;
+    margin-right: 24px;
+    border: solid 1px #EC2688;
+    background: none;
+    color: #EC2688;
+}
+
+.bookmark-input input:focus {
+    outline: none;
+    border-width: 2px;
+    padding: 0 15px;
+}
+
+.bookmark-input input::placeholder {
+    color: #C182A1;
+}
+
+.bookmark-input button {
+    padding: 0 50px;
+    border: none;
+    background: #EC2688;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}

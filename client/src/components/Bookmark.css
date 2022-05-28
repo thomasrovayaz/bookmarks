@@ -1,0 +1,78 @@
+.bookmark {
+    background: #FFEAF5;
+    color: #213760;
+    border-radius: 5px;
+    display: flex;
+    flex-shrink: 1;
+    position: relative;
+    margin-right: 48px;
+    text-decoration: none;
+}
+
+.bookmark img {
+    object-fit: cover;
+}
+
+.bookmark .bookmark-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bookmark .bookmark-author {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.bookmark .bookmark-dimensions {
+    font-size: 12px;
+}
+
+.bookmark-photo {
+    width: 300px;
+    flex-direction: column;
+}
+
+.bookmark-photo img {
+    height: 150px;
+}
+
+.bookmark .bookmark-info {
+    margin: 24px;
+}
+
+.bookmark-video {
+    height: 200px;
+    flex-direction: row;
+}
+
+.bookmark-video img {
+    width: 300px;
+}
+
+.bookmark-video .bookmark-info {
+    width: 275px;
+}
+
+.delete-bookmark-button {
+    background: none;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    right: 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-bookmark-button:hover {
+    background: #EC2688;
+}
+
+.delete-bookmark-button:hover path {
+    fill: white;
+}

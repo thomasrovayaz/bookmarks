@@ -1,0 +1,14 @@
+{
+    "plugins": [
+        "cypress"
+    ],
+    "env": {
+        "cypress/globals": true
+    },
+    "extends": [
+        "plugin:cypress/recommended"
+    ],
+    "rules": {
+        "testing-library/await-async-utils": "off"
+    }
+}

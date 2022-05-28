@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "url": "https://vimeo.com/565486457",
+        "type": "video",
+        "title": "Sylvain Lhommée @ Nation Entreprenante - Episode #5",
+        "thumbnail": "https://i.vimeocdn.com/video/1169280957-6513b97be812eac51f6ba090b2f34ab5a63bfc220076c0118950fcf4c227fdce-d_295x166",
+        "author": "BARTERLINK",
+        "createdAt": "2000-01-01T00:00:00.000Z",
+        "duration": 1070,
+        "width": 426,
+        "height": 240
+    },
+    {
+        "id": 2,
+        "url": "https://www.flickr.com/photos/feuilllu/45771361701/",
+        "type": "photo",
+        "title": "2018 Visite de Klaxoon",
+        "thumbnail": "https://live.staticflickr.com/4817/45771361701_2678123510_q.jpg",
+        "author": "Pierre Metivier",
+        "createdAt": "2000-01-01T00:00:00.000Z",
+        "width": 1024,
+        "height": 685
+    }
+]

@@ -1,0 +1,9 @@
+.photos, .videos {
+    margin-top: 24px;
+}
+
+.bookmarks-scroller {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
