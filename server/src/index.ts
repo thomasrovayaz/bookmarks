@@ -1,9 +1,11 @@
+/* eslint-disable import/first */
+require('dotenv').config()
 import express from 'express'
 import routes from './routes'
 import middlewares from './middlewares'
 import dbConnect from './config/database'
 
-const port = 3000
+const port = 3001
 const base = '/api'
 
 const app = express()

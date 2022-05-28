@@ -4,6 +4,7 @@ import config from '../../knexfile'
 import request from 'supertest'
 import app from '../../src'
 import fetch from 'node-fetch'
+import omit from 'lodash/omit'
 
 jest.mock('node-fetch', () => jest.fn())
 
@@ -27,18 +28,21 @@ describe('bookmarks', () => {
         author: 'Pierre Metivier',
         createdAt: new Date().toISOString(),
         width: 1024,
-        height: 685
+        height: 685,
+        duration: null
     }]
 
     beforeAll(async () => {
         knex = Knex(config)
         Model.knex(knex)
 
+        jest.spyOn(Date.prototype, 'toISOString').mockReturnValue('2000-01-01T00:00:00.000Z')
+    })
+    beforeEach(async () => {
         // Seed anything
+        await knex('bookmarks').del()
         await knex('bookmarks')
             .insert(seededBookmarks)
-
-        jest.spyOn(Date.prototype, 'toISOString').mockReturnValue('2000-01-01T00:00:00.000Z')
     })
     afterAll(() => {
         jest.restoreAllMocks()
@@ -49,7 +53,7 @@ describe('bookmarks', () => {
             const response = await request(app)
                 .get('/api/bookmarks')
             expect(response.status).toEqual(200)
-            expect(response.body).toMatchObject(seededBookmarks)
+            expect(response.body.map(bookmark => omit(bookmark, 'id'))).toEqual(seededBookmarks)
         })
     })
     describe('POST /bookmarks', () => {
@@ -87,7 +91,7 @@ describe('bookmarks', () => {
             const response = await request(app)
                 .post('/api/bookmarks').send({ url: 'https://www.flickr.com/photos/feuilllu/31899892028/in/photostream/' })
             expect(response.status).toEqual(201)
-            expect(response.body).toMatchObject({
+            expect(omit(response.body, 'id')).toEqual({
                 author: 'Pierre Metivier',
                 createdAt: '2000-01-01T00:00:00.000Z',
                 height: 768,
@@ -115,20 +119,23 @@ describe('bookmarks', () => {
             const response = await request(app)
                 .post('/api/bookmarks').send({ url: 'https://google.com/test/' })
             expect(response.status).toEqual(400)
-            expect(response.text).toEqual('L\'URL est invalide')
+            expect(response.text).toEqual("L'URL est invalide")
         })
     })
     describe('DELETE /bookmarks', () => {
         it('should delete a bookmark', async () => {
+            const { body: bookmarks } = await request(app)
+                .get('/api/bookmarks')
             const response = await request(app)
-                .delete('/api/bookmarks/1')
+                .delete(`/api/bookmarks/${bookmarks[0].id}`)
             expect(response.status).toEqual(200)
+            expect(response.body).toEqual(bookmarks.slice(1))
         })
         it('should not delete a non-existing bookmark', async () => {
             const response = await request(app)
                 .delete('/api/bookmarks/1000')
             expect(response.status).toEqual(404)
-            expect(response.text).toEqual('Le bookmark n\'existe pas')
+            expect(response.text).toEqual("Le bookmark n'existe pas")
         })
     })
 })

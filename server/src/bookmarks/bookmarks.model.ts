@@ -1,18 +1,5 @@
 import { Model } from 'objection'
 
-export type Bookmark = {
-    id: number;
-    url: string
-    type: 'photo' | 'video'
-    title: string
-    thumbnail: string
-    author: string
-    createdAt: string
-    duration?: number
-    width: number
-    height: number
-}
-
 export class BookmarksModel extends Model {
     static get tableName () {
         return 'bookmarks'

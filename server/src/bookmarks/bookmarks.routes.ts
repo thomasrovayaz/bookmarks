@@ -53,7 +53,7 @@ router.delete('/:id', async (req, res) => {
             )
     }
     await deleteBookmark(id)
-    res.sendStatus(200)
+    res.status(200).send(await getAllBookmarks())
 })
 
 export default router
