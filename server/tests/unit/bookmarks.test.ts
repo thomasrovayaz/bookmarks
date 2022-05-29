@@ -1,7 +1,7 @@
 import { isValidURL } from '../../src/bookmarks/bookmarks.controller'
 
 describe('bookmarks', () => {
-    it('is url valid', async () => {
+    it('is url valid', () => {
         const validUrls = [
             'https://vimeo.com/565486457',
             'https://www.flickr.com/photos/feuilllu/45771361701/',
