@@ -1,6 +1,6 @@
 import { BookmarkPhotoType } from "../context/BookmarksProvider"
 import DeleteBookmarkButton from "./DeleteBookmarkButton"
-import moment from "moment"
+import Moment from "react-moment"
 
 const BookmarkPhoto = ({ item }: { item: BookmarkPhotoType }) => {
     const {
@@ -24,7 +24,7 @@ const BookmarkPhoto = ({ item }: { item: BookmarkPhotoType }) => {
             <div className={"bookmark-info"}>
                 <div className={"bookmark-title"}>{title}</div>
                 <div className={"bookmark-author"}>
-                    {author}, {moment(createdAt).fromNow()}
+                    {author}, <Moment fromNow>{createdAt}</Moment>
                 </div>
                 <div
                     className={

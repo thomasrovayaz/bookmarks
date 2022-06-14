@@ -1,6 +1,7 @@
 import DeleteBookmarkButton from "./DeleteBookmarkButton"
 import moment from "moment"
 import { BookmarkVideoType } from "../context/BookmarksProvider"
+import Moment from "react-moment"
 
 const BookmarkVideo = ({ item }: { item: BookmarkVideoType }) => {
     const {
@@ -22,7 +23,7 @@ const BookmarkVideo = ({ item }: { item: BookmarkVideoType }) => {
             <div className={"bookmark-info"}>
                 <div className={"bookmark-title"}>{title}</div>
                 <div className={"bookmark-author"}>
-                    {author}, {moment(createdAt).fromNow()}
+                    {author}, <Moment fromNow>{createdAt}</Moment>
                 </div>
                 <div className={"bookmark-dimensions"}>{`${moment.utc(duration * 1000).format("HH:mm:ss")}`}</div>
             </div>
